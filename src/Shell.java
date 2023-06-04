@@ -2,7 +2,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import java.io.File;
 
-public class shell {
+public class Shell {
     public static void main(String[] args) {
         
         try {
