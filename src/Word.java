@@ -7,6 +7,7 @@ public class Word {
     public static void main(String[] args) {
         try {
             Scanner scanner = new Scanner(new File("word.in"));
+            int n = scanner.nextInt();
             int k = scanner.nextInt();
             scanner.nextLine();
             String[] words = scanner.nextLine().split(" ");
