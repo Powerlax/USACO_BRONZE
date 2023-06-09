@@ -1,56 +1,30 @@
+import java.io.File;
 import java.io.PrintWriter;
 import java.util.Scanner;
-import java.io.File;
 
 public class Shell {
     public static void main(String[] args) {
-        
         try {
             Scanner scanner = new Scanner(new File("shell.in"));
             int n = scanner.nextInt();
-            Steps[] steps = new Steps[n];
-
+            int[] shellAtPos = new int[3];
+            for (int i = 0; i < 3; i++) { shellAtPos[i] = i; }
+            int[] counter = new int[3];
             for (int i = 0; i < n; i++) {
-                int guess = scanner.nextInt() - 1;
-                int swap1 = scanner.nextInt() - 1;
-                int swap2 = scanner.nextInt() - 1;
-                steps[i] = new Steps(swap1, swap2, guess);
-            }
-            int max = 0;
-            for (int start = 1; start <= 3; start++){
-                boolean[] hasPebble = new boolean[4];
-                hasPebble[start] = true;
-                int numPoints = 0;
-                for (int i = 0; i<n; i++) {
-                    int a = steps[i].a;
-                    int b = steps[i].b;
-                    int g = steps[i].guess;
-                    boolean temp = hasPebble[a];
-                    hasPebble[a] = hasPebble[b];
-                    hasPebble[b] = temp;
-                    if (hasPebble[g]) {
-                        numPoints++;
-                    }
-                }
-                if (numPoints>max){
-                    max = numPoints;
-                }
+                int a = scanner.nextInt() - 1;
+                int b = scanner.nextInt() - 1;
+                int g = scanner.nextInt() - 1;
+                int temp = shellAtPos[b];
+                shellAtPos[b] = shellAtPos[a];
+                shellAtPos[a] = temp;
+                counter[shellAtPos[g]]++;
             }
             PrintWriter pw = new PrintWriter("shell.out");
-            pw.println(max);
+            pw.println(Math.max(counter[0], Math.max(counter[1], counter[2])));
             pw.close();
+            scanner.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-    }
-}
-
-class Steps {
-    public int a,b,guess;
-    public Steps(int a, int b, int guess) {
-        this.a=a;
-        this.b=b;
-        this.guess=guess;
     }
 }
