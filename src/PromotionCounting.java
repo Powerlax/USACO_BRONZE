@@ -14,10 +14,11 @@ public class PromotionCounting {
         }
         int GtoP = after[3] - before[3];
         int StoG = after[2] - (before[2] + GtoP);
-        int BtoS = after[1] - (before[1] + StoG + GtoP);
+        int BtoS = after[1] - (before[1] + StoG);
         PrintWriter pw = new PrintWriter("promote.out");
         pw.println(BtoS);
         pw.println(StoG);
         pw.println(GtoP);
+        pw.close();
     }
 }
