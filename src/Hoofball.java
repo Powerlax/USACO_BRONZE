@@ -15,17 +15,21 @@ public class Hoofball {
         Arrays.sort(data);
         int count = 0;
         for (int i = 0; i<n; i++) {
+            int i1 = data[i + 1] - data[i];
             if (i == 0) {
-                if (data[i+1] - data[i] <= data[i+2] - data[i+1]) {
-                    count++;
-                }
-            } else if (i == n-1) {
-                if (data[i] - data[i-1] <= data[i-1] - data[i-2]) {
+                if (i1 <= data[i+2] - data[i+1]) {
                     count++;
                 }
             } else {
-                if (data[i] - data[i-1] <= data[i+1] - data[i]) {
-                    count++;
+                int i2 = data[i] - data[i - 1];
+                if (i == n-1) {
+                    if (i2 <= data[i-1] - data[i-2]) {
+                        count++;
+                    }
+                } else {
+                    if (i2 <= i1) {
+                        count++;
+                    }
                 }
             }
         }
