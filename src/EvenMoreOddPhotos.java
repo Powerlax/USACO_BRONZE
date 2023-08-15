@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class EvenMoreOddPhotos {
+    //from the USACO 2021 Jan Contest, Bronze
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
@@ -14,13 +15,33 @@ public class EvenMoreOddPhotos {
                 odd++;
             }
         }
-        while (odd > even) {
-            odd = odd - 2;
-            even++;
+        int count = 0;
+        for (int i = 0; i<n; i++) {
+            if (i % 2 == 0) {
+                if (even >= 1) {
+                    even--;
+                    count++;
+                } else if (odd >= 2) {
+                    odd -= 2;
+                    count++;
+                } else {
+                    break;
+                }
+            } else {
+                if (even >= 1 && odd >= 1) {
+                    even--;
+                    odd--;
+                    count++;
+                } else if (odd >= 3) {
+                    odd -= 3;
+                    count++;
+                } else if (odd >= 1) {
+                    odd--;
+                } else {
+                    break;
+                }
+            }
         }
-        if (even > odd + 1) {
-            even = odd + 1;
-        }
-        System.out.println(even + odd);
+        System.out.println(count);
     }
 }
