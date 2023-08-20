@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class GrassPlanting {
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("planting.in")));
+        Scanner scanner = new Scanner(new File("planting.in"));
         int n = scanner.nextInt();
         int[] data = new int[n];
         for (int i = 0; i<n-1; i++) {
@@ -22,7 +22,7 @@ public class GrassPlanting {
         }
         ans++;
         PrintWriter pw = new PrintWriter("planting.out");
-        pw.println(ans));
+        pw.println(ans);
         pw.close();
     }
 }
